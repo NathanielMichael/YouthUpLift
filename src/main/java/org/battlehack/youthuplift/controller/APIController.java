@@ -20,12 +20,12 @@ public class APIController
     Dummy index(HttpServletResponse response) throws IOException
     {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("Bryan & Tacos");
+            LOG.debug("Bryan & Macie");
         }
 
         Dummy dummy = new Dummy();
         dummy.setName("Bryan");
-        dummy.setText("Tacos");
+        dummy.setText("Macie");
 
         return dummy;
     }
