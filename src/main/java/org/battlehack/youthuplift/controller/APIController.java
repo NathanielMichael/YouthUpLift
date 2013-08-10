@@ -15,7 +15,7 @@ public class APIController
 {
     public static final Log LOG = LogFactory.getLog(APIController.class);
 
-    @RequestMapping("/")
+    @RequestMapping("/api")
     public @ResponseBody
     Dummy index(HttpServletResponse response) throws IOException
     {
