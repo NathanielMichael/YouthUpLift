@@ -35,7 +35,7 @@ function ProfileViewModel() {
 var pvm = new ProfileViewModel();
 $.getJSON( "/api/profile", function(data){
     $.each( data, function( el,i ){
-        console.log( "blah" );
+        console.log( el.name );
         pvm.profiles.push({ name: el.name });
     });
     //pvm.profiles = ko.observableArray(data);
