@@ -6,11 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function ProfileModel( firstName, lastName ){
+function ProfileModel( params ){
     var self = this;
-    self.name = name;
-    self.firstName = firstName;
-    self.lastName = lastName;
+    self.name = params.name;
+    self.firstName = params.firstName;
+    self.lastName = params.lastName;
 }
 
 function ProfileViewModel() {
@@ -28,18 +28,14 @@ function ProfileViewModel() {
     self.profiles = ko.observableArray();
 }
 
-
 //var json = $.getJSON( "/api/profile" );
 //console.log( json["responseJSON"] );
 
 var pvm = new ProfileViewModel();
 $.getJSON( "/api/profile", function(data){
-    $.each( data, function( el,i ){
-        console.log( el.name );
-        pvm.profiles.push({ name: el.name });
+    $.each( data, function( i, el ){
+        pvm.profiles.push(new ProfileModel({ name: el.name }));
     });
-    //pvm.profiles = ko.observableArray(data);
-    //ko.applyBindings( pvm );
 })
 ko.applyBindings( pvm );
 
