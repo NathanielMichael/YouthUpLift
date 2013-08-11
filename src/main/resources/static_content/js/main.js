@@ -25,12 +25,18 @@ function ProfileViewModel() {
 
     //console.log($.getJSON( "/api/profile").responseText);
 
-    self.profiles = ko.observableArray(JSON.parse($.getJSON( "/api/profile" ).responseText));
+    self.profiles = ko.observableArray();
 }
 
-var json = $.getJSON( "/api/profile" );
 
-console.log( json["responseJSON"] );
+//var json = $.getJSON( "/api/profile" );
+//console.log( json["responseJSON"] );
 
-ko.applyBindings(new ProfileViewModel());
+var pvm = new ProfileViewModel();
+$.getJSON( "/api/profile", function(data){
+    pvm.profiles = data;
+})
+ko.applyBindings( pvm );
+
+
 
