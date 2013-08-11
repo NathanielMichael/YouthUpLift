@@ -8,6 +8,7 @@
 
 function ProfileModel( firstName, lastName ){
     var self = this;
+    self.name = name;
     self.firstName = firstName;
     self.lastName = lastName;
 }
@@ -15,12 +16,21 @@ function ProfileModel( firstName, lastName ){
 function ProfileViewModel() {
     var self = this;
 
+    /*
     self.profiles = ko.observableArray([
         new ProfileModel( "Kira", "Kroger" ),
         new ProfileModel( "Bryan", "Kroger" ),
         new ProfileModel( "Nate", "Michael" )
-    ]);
+    ]); */
+
+    //console.log($.getJSON( "/api/profile").responseText);
+
+    self.profiles = ko.observableArray(JSON.parse($.getJSON( "/api/profile" ).responseText));
 }
+
+var json = $.getJSON( "/api/profile" );
+
+console.log( json["responseJSON"] );
 
 ko.applyBindings(new ProfileViewModel());
 

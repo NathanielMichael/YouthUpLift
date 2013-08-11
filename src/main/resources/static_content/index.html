@@ -2,8 +2,15 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/css/cyborg_bootstrap.css" />
+    <script src="/js/jquery-1.10.2.min.js"></script>
     <script src="/js/knockout-2.3.0.debug.js"></script>
     <title>Stuff & Things</title>
+    <style>
+        .profile_image {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
 
@@ -14,12 +21,17 @@
     <p><a class="btn btn-primary btn-large">Learn more</a></p>
 </div>
 
-<div data-bind="foreach: profiles">
-    <div>
-        <span data-bind="text: firstName"></span>
-        <span data-bind="text: lastName"></span>
-    </div>
-</div>
+<table data-bind="foreach: profiles">
+  <tr>
+    <td>
+        <img src="/images/woman_teacher.jpg" class="profile_image" />
+    </td>
+    <td>
+        <span data-bind="text: name"></span>
+    </td>
+
+  </tr>
+</table>
 
 <script src="/js/main.js"></script>
 
