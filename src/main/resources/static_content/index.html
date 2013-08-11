@@ -29,7 +29,22 @@
     <td>
         <span data-bind="text: name"></span>
     </td>
-
+    <td>
+        Needs:
+        <table data-bind="foreach: needs">
+        <tr>
+            <td data-bind="text: name"></td>
+        </tr>
+        </table>
+    </td>
+    <td>
+        Badges:
+        <table data-bind="foreach: badges">
+            <tr>
+                <td data-bind="text: name"></td>
+            </tr>
+        </table>
+    </td>
   </tr>
 </table>
 

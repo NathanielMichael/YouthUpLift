@@ -6,9 +6,13 @@
  * To change this template use File | Settings | File Templates.
  */
 
+var pvm = new ProfileViewModel();
+
 function ProfileModel( params ){
     var self = this;
     self.name = params.name;
+    self.needs = params.needs;
+    self.badges = params.badges;
     self.firstName = params.firstName;
     self.lastName = params.lastName;
 }
@@ -16,27 +20,24 @@ function ProfileModel( params ){
 function ProfileViewModel() {
     var self = this;
 
-    /*
-    self.profiles = ko.observableArray([
-        new ProfileModel( "Kira", "Kroger" ),
-        new ProfileModel( "Bryan", "Kroger" ),
-        new ProfileModel( "Nate", "Michael" )
-    ]); */
-
-    //console.log($.getJSON( "/api/profile").responseText);
-
     self.profiles = ko.observableArray();
+
+    self.update_profiles = function(){
+        $.getJSON( "/api/profile", function(data){
+            $.each( data, function( i, el ){
+                if(el.needs == undefined){
+                    el.needs = [];
+                }
+                pvm.profiles.push(new ProfileModel( el ));
+            });
+        })
+    }
+
+
 }
 
-//var json = $.getJSON( "/api/profile" );
-//console.log( json["responseJSON"] );
+pvm.update_profiles();
 
-var pvm = new ProfileViewModel();
-$.getJSON( "/api/profile", function(data){
-    $.each( data, function( i, el ){
-        pvm.profiles.push(new ProfileModel({ name: el.name }));
-    });
-})
 ko.applyBindings( pvm );
 
 
