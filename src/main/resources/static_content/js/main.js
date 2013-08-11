@@ -15,11 +15,7 @@ function ProfileModel( firstName, lastName ){
 function ProfileViewModel() {
     var self = this;
 
-    self.profiles = [
-        { 'firstName': "FirstName", 'lastName': 'LastName' }
-    ]
-
-    ko.observableArray([
+    self.profiles = ko.observableArray([
         new ProfileModel( "Kira", "Kroger" ),
         new ProfileModel( "Bryan", "Kroger" ),
         new ProfileModel( "Nate", "Michael" )
