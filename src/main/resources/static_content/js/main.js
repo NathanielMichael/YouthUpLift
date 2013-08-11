@@ -6,29 +6,25 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function YouthUpLift{
-
-    var key = "";
-    var value = "value";
-
-    function yada = function( key ){
-        console.log( "yada: " + this.key );
-    }
-
-    function getUser = function( user_id ){
-        console.log( "Creating user" );
-    }
-
-    function getUsers = function(){
-        console.log( "Getting users" );
-    }
-
-    function getProfiles = function(){
-        console.log( "Getting profiles" );
-    }
-
-    function getProfile = function( profile_id ){
-        console.log( "Getting profile: " +profile_id );
-    }
-
+function ProfileModel( firstName, lastName ){
+    var self = this;
+    self.firstName = firstName;
+    self.lastName = lastName;
 }
+
+function ProfileViewModel() {
+    var self = this;
+
+    self.profiles = [
+        { 'firstName': "FirstName", 'lastName': 'LastName' }
+    ]
+
+    ko.observableArray([
+        new ProfileModel( "Kira", "Kroger" ),
+        new ProfileModel( "Bryan", "Kroger" ),
+        new ProfileModel( "Nate", "Michael" )
+    ]);
+}
+
+ko.applyBindings(new ProfileViewModel());
+
